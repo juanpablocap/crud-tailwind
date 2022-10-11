@@ -1,4 +1,18 @@
+import { useEffect } from "react";
+import axiosCliente from "../config/axiosConfig";
+
 const Table = () => {
+
+
+  const getUsers = async () =>{
+    const res = await axiosCliente.get('/users');
+    console.log(res.data);
+  }
+
+useEffect(()=>{
+  getUsers();
+},[])
+
     return ( 
         <>
             <div className="overflow-x-auto">

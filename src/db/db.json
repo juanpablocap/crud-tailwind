@@ -1,0 +1,12 @@
+{
+    "users":[
+        {
+            "name": "Juan",
+            "lastname": "rojas"
+        },
+        {
+            "name": "Pedro",
+            "lastname": "Frias"
+        }
+    ]
+}
