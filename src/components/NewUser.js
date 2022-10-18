@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { Form, Field } from 'react-final-form';
-import axios from 'axios';
+import axiosCliente from './../config/axiosConfig';
+import { Link } from 'react-router-dom';
+import { editUser } from './Table';
 
 
-const NewUser = () => {
+const NewUser = (props) => {
 
   const  [values, setValues] = useState({
     name:'',
@@ -18,20 +20,28 @@ const NewUser = () => {
     })
   }
 
+  const putUser = () =>{
+
+  }
   const handleClick = async () =>{
-    //sendToBack(values)
-    await sleep(2000);
-    console.log("se envio al Backend!");
-    //navegar al home
+      const res = await axiosCliente.post('/users', values);
+      console.log(res.data);
+      window.alert("Usuario: "+ (values.name)+" se guardado con exito!");
+      await sleep(2000);
+      window.location.reload()    
   }
 
   const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
   const onSubmit = async values => {
-  await sleep(2000)
-  window.alert("Usuario guardado!");
+  await sleep(1000);
+  window.location.reload() 
 }
 
 const required = value => (value ? undefined : 'Required')
+const close = (e) => {
+  e.preventDefault();
+  window.location.reload()
+}
 
   return (
     <Form
@@ -45,6 +55,7 @@ const required = value => (value ? undefined : 'Required')
               <div className="mb-2 input-group-sm" >
                 <label className="input-group-sm p-2">Nombre</label>
                 <input {...input} 
+                autoFocus
                 className="input input-bordered input-sm p-2" 
                 type="text" onKeyUp={(e)=>handleKeyUp(e)}
                 placeholder="ingresa tu nombre" />
@@ -75,11 +86,11 @@ const required = value => (value ? undefined : 'Required')
             disabled={submitting}>
               Enviar
             </button>
-            <button className="btn btn-outline btn-accent p-2">
+            <button onClick={(e)=>close(e)} className="btn btn-outline btn-accent p-2">
               Cancelar</button>
           </div>
         </form>
-        
+        <Link to='/' >Volver al Home</Link>
         </div>
       )}
     />
