@@ -9,7 +9,7 @@ const NavBar = () => {
             Crud con Tailwind & DaisyUI
           </a>
           <Link to="/newuser">
-            <button className="btn btn-outline  btn-xs btn-info">
+            <button className="btn btn-outline  btn-xs btn-info m-3">
               Crear Usuario
             </button>
           </Link>

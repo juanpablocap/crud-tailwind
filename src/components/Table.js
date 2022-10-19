@@ -9,7 +9,6 @@ const Table = () => {
   const required = (value) => (value ? undefined : "Required");
   const onSubmit = async (values) => {};
 
-  // editar modal
   const handleEditModal = async (id) => {
     const resEdit = await axiosClient.get("/users/" + id);
     setEditUser(resEdit.data);
@@ -54,7 +53,7 @@ const Table = () => {
   return (
     <>
       <div className="overflow-x-auto">
-        <table className="table w-full">
+        <table className="table table-zebra w-full">
           <thead>
             <tr>
               <th>Id</th>
@@ -109,7 +108,7 @@ const Table = () => {
             ✕
           </label>
           <h3 className="text-lg font-bold">
-            Editar el usuario n {editUser ? editUser.id : ""}
+            Editar el usuario nº {editUser ? editUser.id : ""}
           </h3>
           <Form
             initialValues={editUser}
