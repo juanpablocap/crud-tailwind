@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { Form, Field } from 'react-final-form';
-import axiosCliente from './../config/axiosConfig';
+import axiosClient from './../config/axiosConfig';
 import { Link } from 'react-router-dom';
-import { editUser } from './Table';
 
 
 const NewUser = (props) => {
@@ -13,19 +12,14 @@ const NewUser = (props) => {
   });
 
   const handleKeyUp = (e) => {
-    console.log(e.target.value);
     setValues({
       ...values,
       [e.target.name]:e.target.value
     })
   }
 
-  const putUser = () =>{
-
-  }
   const handleClick = async () =>{
-      const res = await axiosCliente.post('/users', values);
-      console.log(res.data);
+      const res = await axiosClient.post('/users', values);
       window.alert("Usuario: "+ (values.name)+" se guardado con exito!");
       await sleep(2000);
       window.location.reload()    
@@ -55,12 +49,12 @@ const close = (e) => {
               <div className="mb-2 input-group-sm" >
                 <label className="input-group-sm p-2">Nombre</label>
                 <input {...input} 
-                autoFocus
-                className="input input-bordered input-sm p-2" 
-                type="text" onKeyUp={(e)=>handleKeyUp(e)}
-                placeholder="ingresa tu nombre" />
-                {meta.error && meta.touched && 
-                <span className="p-1 rounded alert-error">{meta.error}</span>}
+                  autoFocus
+                  className="input input-bordered input-sm p-2" 
+                  type="text" onKeyUp={(e)=>handleKeyUp(e)}
+                  placeholder="ingresa tu nombre" />
+                  {meta.error && meta.touched && 
+                <span className="p-1 rounded alert-error m-3">{meta.error}</span>}
               </div>
             )}
           </Field>
@@ -70,11 +64,11 @@ const close = (e) => {
               <div className="mb-2 input-group-sm">
                 <label className="input-group-sm p-2">Apellido</label>
                 <input {...input} 
-                className="input input-bordered input-sm p-2" type="text" 
-                onKeyUp={(e)=>handleKeyUp(e)}
-                placeholder="ingresa tu apellido" />
+                  className="input input-bordered input-sm p-2" type="text" 
+                  onKeyUp={(e)=>handleKeyUp(e)}
+                  placeholder="ingresa tu apellido" />
                 {meta.error && meta.touched && 
-                <span className=" p-1 rounded alert-error">{meta.error}</span>}
+                <span className=" p-1 rounded alert-error m-3">{meta.error}</span>}
               </div>
             )}
           </Field>
