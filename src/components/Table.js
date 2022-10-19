@@ -73,14 +73,14 @@ const Table = () => {
                     <label
                       onClick={() => handleEditModal(user.id)}
                       htmlFor="my-modal-3"
-                      className="btn modal-button btn-accent  btn-xs m-2"
+                      className="btn modal-button btn-success  btn-xs m-2"
                     >
                       Editar
                     </label>
                   </button>
 
                   <button
-                    className="btn  btn-secondary  btn-xs"
+                    className="btn  btn-error  btn-xs"
                     onClick={() => delUser(user.id)}
                   >
                     Borrar
